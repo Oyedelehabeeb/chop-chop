@@ -1,0 +1,75 @@
+import {defineField, defineType} from 'sanity'
+
+export default defineType({
+  name: 'restaurant',
+  type: 'document',
+  description: 'Restaurant profile',
+  fields: [
+    defineField({
+      name: 'owner',
+      type: 'reference',
+      to: [{type: 'user'}],
+      title: 'Owner',
+      description: 'The owner of the restaurant',
+    //   validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'name',
+      type: 'string',
+      title: 'Name',
+      description: 'The name of the restaurant',
+    //   validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'description',
+      type: 'text',
+      title: 'Description',
+      description: 'The description of the restaurant',
+    //   validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'logo',
+      type: 'image',
+      title: 'Logo',
+      description: 'The logo of the restaurant',
+      //   validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'coverImage',
+      type: 'image',
+      title: 'Cover Image',
+      description: 'The cover image of the restaurant',
+      //   validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'location',
+      type: 'string',
+      title: 'Location',
+      description: 'The location of the restaurant',
+    //   validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'cuisineType',
+      type: 'string',
+      title: 'Cuisine Type',
+      description: 'The cuisine type of the restaurant',
+    //   validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'approved',
+      type: 'boolean',
+      title: 'Approved',
+      description: 'The approved status of the restaurant',
+      initialValue: false,
+    //   validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'createdAt',
+      type: 'datetime',
+      title: 'Created At',
+      description: 'The date and time the restaurant was created',
+    //   validation: (Rule) => Rule.required(),
+      initialValue: () => new Date().toISOString(),
+    }),
+  ],
+})

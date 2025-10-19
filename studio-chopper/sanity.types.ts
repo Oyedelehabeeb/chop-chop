@@ -13,6 +13,66 @@
  */
 
 // Source: schema.json
+export type Restaurant = {
+  _id: string
+  _type: 'restaurant'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  owner?: {
+    _ref: string
+    _type: 'reference'
+    _weak?: boolean
+    [internalGroqTypeReferenceTo]?: 'user'
+  }
+  name?: string
+  description?: string
+  logo?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  coverImage?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  location?: string
+  cuisineType?: string
+  approved?: boolean
+  createdAt?: string
+}
+
+export type User = {
+  _id: string
+  _type: 'user'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  clerkId?: string
+  fullname?: string
+  email?: string
+  role?: 'customer' | 'restaurantOwner' | 'admin'
+  phone?: string
+  address?: string
+  createdAt?: string
+  updatedAt?: string
+}
+
 export type SanityImagePaletteSwatch = {
   _type: 'sanity.imagePaletteSwatch'
   background?: string
@@ -132,6 +192,8 @@ export type SanityAssetSourceData = {
 }
 
 export type AllSanitySchemaTypes =
+  | Restaurant
+  | User
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
